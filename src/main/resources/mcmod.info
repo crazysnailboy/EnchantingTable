@@ -1,0 +1,14 @@
+[{
+	"modid": "csb_ench_table",
+	"name": "Lapis Stays in the Enchanting Table",
+	"description": "Makes the lapis slot on the enchanting table persistent, so your lapis stays put!",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
+	"url": "",
+	"updateUrl": "",
+	"authorList": ["crazysnailboy"],
+	"credits": "",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}]
