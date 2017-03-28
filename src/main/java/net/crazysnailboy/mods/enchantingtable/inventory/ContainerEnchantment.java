@@ -58,10 +58,10 @@ public class ContainerEnchantment extends net.minecraft.inventory.ContainerEncha
 
 		// *** copied from net.minecraft.inventory.Container.onContainerClosed ***
 		InventoryPlayer inventoryplayer = playerIn.inventory;
-		if (inventoryplayer.getItemStack() != null)
+		if (!inventoryplayer.getItemStack().isEmpty())
 		{
 			playerIn.dropItem(inventoryplayer.getItemStack(), false);
-			inventoryplayer.setItemStack((ItemStack)null);
+			inventoryplayer.setItemStack(ItemStack.EMPTY);
 		}
 		// *** copied from net.minecraft.inventory.Container.onContainerClosed ***
 
@@ -69,7 +69,7 @@ public class ContainerEnchantment extends net.minecraft.inventory.ContainerEncha
 		if (!world.isRemote)
 		{
 			ItemStack itemstack = this.tableInventory.removeStackFromSlot(0);
-			if (itemstack != null)
+			if (!itemstack.isEmpty())
 			{
 				playerIn.dropItem(itemstack, false);
 			}
@@ -97,10 +97,10 @@ public class ContainerEnchantment extends net.minecraft.inventory.ContainerEncha
 			TileEntityEnchantmentTable tileentityenchantmenttable = (TileEntityEnchantmentTable)tileentity;
 			IItemHandler handler = tileentityenchantmenttable.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-			ItemStack lapisStack = handler.getStackInSlot(0); if (lapisStack != null) lapisStack = lapisStack.copy();
+			ItemStack lapisStack = handler.getStackInSlot(0).copy();
 
 			this.tableInventory.setInventorySlotContents(1, lapisStack);
-			handler.insertItem(0, null, false);
+			handler.insertItem(0, ItemStack.EMPTY, false);
 		}
 	}
 
