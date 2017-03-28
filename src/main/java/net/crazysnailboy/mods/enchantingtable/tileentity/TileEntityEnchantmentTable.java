@@ -51,11 +51,11 @@ public class TileEntityEnchantmentTable extends net.minecraft.tileentity.TileEnt
 		return super.hasCapability(capability, facing);
 	}
 
-	@Override
+    @Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)
-	{
-		return new ContainerEnchantment(playerInventory, this.world, this.pos);
-	}
+    {
+        return new ContainerEnchantment(playerInventory, this.world, this.pos);
+    }
 
 	@Override
 	public void update()

@@ -6,7 +6,6 @@ import net.crazysnailboy.mods.enchantingtable.common.network.GuiHandler;
 import net.crazysnailboy.mods.enchantingtable.tileentity.TileEntityEnchantmentTable;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -20,7 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = EnchantingTable.MODID, version = EnchantingTable.VERSION, updateJSON = EnchantingTable.UPDATEJSON, acceptedMinecraftVersions = "[1.10.2]")
+@Mod(modid = EnchantingTable.MODID, version = EnchantingTable.VERSION, updateJSON = EnchantingTable.UPDATEJSON, acceptedMinecraftVersions = "[1.11,1.11.2]")
 public class EnchantingTable
 {
 	public static final String MODID = "csb_ench_table";
@@ -57,7 +56,7 @@ public class EnchantingTable
 			BlockPos pos = event.getPos();
 
 			// if the block being clicked is an enchanting table
-			if (event.getHand() == EnumHand.MAIN_HAND && world.getBlockState(pos).getBlock() == Blocks.ENCHANTING_TABLE)
+			if (world.getBlockState(pos).getBlock() == Blocks.ENCHANTING_TABLE)
 			{
 				// replace the vanilla enchanting table tile entity with our custom one, if we haven't done so already for this enchanting table
 				TileEntity tileEntity = world.getTileEntity(pos);

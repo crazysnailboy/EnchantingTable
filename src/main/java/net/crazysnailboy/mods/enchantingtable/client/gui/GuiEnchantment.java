@@ -47,7 +47,7 @@ public class GuiEnchantment extends GuiContainer
 	public float flipA;
 	public float open;
 	public float oOpen;
-	ItemStack last;
+	private ItemStack last = ItemStack.EMPTY;
 	private final IWorldNameable nameable;
 
 	public GuiEnchantment(InventoryPlayer inventory, World worldIn, IWorldNameable nameable)
@@ -64,8 +64,8 @@ public class GuiEnchantment extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRendererObj.drawString(this.nameable.getDisplayName().getUnformattedText(), 12, 5, 4210752);
-		this.fontRendererObj.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
+		this.fontRenderer.drawString(this.nameable.getDisplayName().getUnformattedText(), 12, 5, 4210752);
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
 	}
 
 	/**
@@ -189,12 +189,12 @@ public class GuiEnchantment extends GuiContainer
 			else
 			{
 				String s = "" + k1;
-				int l1 = 86 - this.fontRendererObj.getStringWidth(s);
-				String s1 = EnchantmentNameParts.getInstance().generateNewRandomName(this.fontRendererObj, l1);
+				int l1 = 86 - this.fontRenderer.getStringWidth(s);
+				String s1 = EnchantmentNameParts.getInstance().generateNewRandomName(this.fontRenderer, l1);
 				FontRenderer fontrenderer = this.mc.standardGalacticFontRenderer;
 				int i2 = 6839882;
 
-				if ((k < l + 1 || this.mc.player.experienceLevel < k1) && !this.mc.player.capabilities.isCreativeMode)
+				if (((k < l + 1 || this.mc.player.experienceLevel < k1) && !this.mc.player.capabilities.isCreativeMode) || this.container.enchantClue[l] == -1) // Forge: render buttons as disabled when enchantable but enchantability not met on lower levels
 				{
 					this.drawTexturedModalRect(i1, j + 14 + 19 * l, 0, 185, 108, 19);
 					this.drawTexturedModalRect(i1 + 1, j + 15 + 19 * l, 16 * l, 239, 16, 16);
@@ -221,7 +221,7 @@ public class GuiEnchantment extends GuiContainer
 					i2 = 8453920;
 				}
 
-				fontrenderer = this.mc.fontRendererObj;
+				fontrenderer = this.mc.fontRenderer;
 				fontrenderer.drawStringWithShadow(s, (float)(j1 + 86 - fontrenderer.getStringWidth(s)), (float)(j + 16 + 19 * l + 7), i2);
 			}
 		}
@@ -244,12 +244,13 @@ public class GuiEnchantment extends GuiContainer
 			int l = this.container.worldClue[j];
 			int i1 = j + 1;
 
-			if (this.isPointInRegion(60, 14 + 19 * j, 108, 17, mouseX, mouseY) && k > 0 && l >= 0 && enchantment != null)
+			if (this.isPointInRegion(60, 14 + 19 * j, 108, 17, mouseX, mouseY) && k > 0)
 			{
 				List<String> list = Lists.<String>newArrayList();
-				list.add("" + TextFormatting.WHITE + TextFormatting.ITALIC + I18n.format("container.enchant.clue", new Object[] { enchantment.getTranslatedName(l) }));
+				list.add("" + TextFormatting.WHITE + TextFormatting.ITALIC + I18n.format("container.enchant.clue", new Object[] { enchantment == null ? "" : enchantment.getTranslatedName(l) }));
 
-				if (!flag)
+				if (enchantment == null) java.util.Collections.addAll(list, "", TextFormatting.RED + I18n.format("forge.container.enchant.limitedEnchantability"));
+				else if (!flag)
 				{
 					list.add("");
 
