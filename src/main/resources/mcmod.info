@@ -4,7 +4,7 @@
 	"description": "Makes the lapis slot on the enchanting table persistent, so your lapis stays put!",
 	"version": "${version}",
 	"mcversion": "${mcversion}",
-	"url": "",
+	"url": "https://minecraft.curseforge.com/projects/lapis-stays-in-the-enchanting-table/",
 	"updateUrl": "",
 	"authorList": ["crazysnailboy"],
 	"credits": "",
