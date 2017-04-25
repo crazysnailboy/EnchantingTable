@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "csb_ench_table:ender_enchanting_table_base" }
+    }
+}

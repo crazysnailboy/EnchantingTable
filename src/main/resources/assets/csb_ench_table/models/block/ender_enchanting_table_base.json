@@ -1,0 +1,23 @@
+{   "parent": "block/block",
+    "textures": {
+        "particle": "csb_ench_table:blocks/ender_enchanting_table_bottom",
+        "bottom": "csb_ench_table:blocks/ender_enchanting_table_bottom",
+        "top": "csb_ench_table:blocks/ender_enchanting_table_top",
+        "left": "csb_ench_table:blocks/ender_enchanting_table_side_left",
+        "right": "csb_ench_table:blocks/ender_enchanting_table_side_right",
+        "front": "csb_ench_table:blocks/ender_enchanting_table_front"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 12, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+                "north": { "uv": [ 0, 4, 16, 16 ], "texture": "#front", "cullface": "north" },
+                "south": { "uv": [ 0, 4, 16, 16 ], "texture": "#front", "cullface": "south" },
+                "west":  { "uv": [ 0, 4, 16, 16 ], "texture": "#left", "cullface": "west" },
+                "east":  { "uv": [ 0, 4, 16, 16 ], "texture": "#right", "cullface": "east" }
+            }
+        }
+    ]
+}

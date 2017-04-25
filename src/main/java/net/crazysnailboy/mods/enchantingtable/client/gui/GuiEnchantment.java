@@ -19,6 +19,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnchantmentNameParts;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IWorldNameable;
@@ -50,9 +51,9 @@ public class GuiEnchantment extends GuiContainer
 	private ItemStack last = ItemStack.EMPTY;
 	private final IWorldNameable nameable;
 
-	public GuiEnchantment(InventoryPlayer inventory, World worldIn, IWorldNameable nameable)
+	public GuiEnchantment(InventoryPlayer inventory, World world, BlockPos pos, IWorldNameable nameable)
 	{
-		super(new ContainerEnchantment(inventory, worldIn));
+		super(new ContainerEnchantment(inventory, world, pos));
 		this.playerInventory = inventory;
 		this.container = (ContainerEnchantment)this.inventorySlots;
 		this.nameable = nameable;
