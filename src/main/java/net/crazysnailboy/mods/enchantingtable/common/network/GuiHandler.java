@@ -29,7 +29,7 @@ public class GuiHandler implements net.minecraftforge.fml.common.network.IGuiHan
 		if (id == GUI_ENCHANTING_TABLE)
 		{
 			BlockPos pos = new BlockPos(x, y, z);
-			return new GuiEnchantment(player.inventory, world, (IWorldNameable)world.getTileEntity(pos));
+			return new GuiEnchantment(player.inventory, world, pos, (IWorldNameable)world.getTileEntity(pos));
 		}
 		return null;
 	}
