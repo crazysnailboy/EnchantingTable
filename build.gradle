@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.1"
+version = "1.1.1"
 group = "net.crazysnailboy.mods.enchantingtable"
 archivesBaseName = "EnchantingTable-1.12"
 
@@ -23,7 +23,7 @@ compileJava {
 minecraft {
     version = "1.12-14.21.0.2322"
     runDir = "run"
-    mappings = "snapshot_20170610"
+    mappings = "snapshot_20170614"
     makeObfSourceJar = false
 
     replace "\${version}", project.version

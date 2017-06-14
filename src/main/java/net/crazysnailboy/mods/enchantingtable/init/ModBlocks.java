@@ -1,6 +1,6 @@
 package net.crazysnailboy.mods.enchantingtable.init;
 
-import java.util.UUID;
+import net.crazysnailboy.mods.enchantingtable.EnchantingTable;
 import net.crazysnailboy.mods.enchantingtable.block.BlockEnderEnchantmentTable;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -36,25 +36,25 @@ public class ModBlocks
 
 	public static void registerCraftingRecipes()
 	{
-		addShapelessRecipe(new ItemStack(ENDER_ENCHANTING_TABLE), new Object[] { Blocks.ENCHANTING_TABLE, Items.ENDER_EYE });
+		addShapelessRecipe("ender_enchanting_table", new ItemStack(ENDER_ENCHANTING_TABLE), new Object[] { Blocks.ENCHANTING_TABLE, Items.ENDER_EYE });
 	}
-	
-	
-	
-	private static void addShapelessRecipe(ItemStack stack, Object... recipeComponents)
+
+
+
+	private static void addShapelessRecipe(String name, ItemStack stack, Object... recipeComponents)
 	{
-		String name = UUID.randomUUID().toString();
+		name = EnchantingTable.MODID + ":" + name;
 		NonNullList<Ingredient> list = NonNullList.create();
 
 		for (Object object : recipeComponents)
 		{
 			if (object instanceof ItemStack)
 			{
-				list.add(Ingredient.func_193369_a(((ItemStack)object).copy()));
+				list.add(Ingredient.fromStacks(((ItemStack)object).copy()));
 			}
 			else if (object instanceof Item)
 			{
-				list.add(Ingredient.func_193369_a(new ItemStack((Item)object)));
+				list.add(Ingredient.fromStacks(new ItemStack((Item)object)));
 			}
 			else
 			{
@@ -63,11 +63,11 @@ public class ModBlocks
 					throw new IllegalArgumentException("Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!");
 				}
 
-				list.add(Ingredient.func_193369_a(new ItemStack((Block)object)));
+				list.add(Ingredient.fromStacks(new ItemStack((Block)object)));
 			}
 		}
 
-		CraftingManager.func_193379_a(name, new ShapelessRecipes(name, stack, list));
-	}	
+		CraftingManager.register(name, new ShapelessRecipes(name, stack, list));
+	}
 
 }
