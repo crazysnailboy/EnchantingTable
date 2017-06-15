@@ -10,10 +10,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks
@@ -43,31 +43,37 @@ public class ModBlocks
 
 	private static void addShapelessRecipe(String name, ItemStack stack, Object... recipeComponents)
 	{
-		name = EnchantingTable.MODID + ":" + name;
-		NonNullList<Ingredient> list = NonNullList.create();
-
-		for (Object object : recipeComponents)
+		try
 		{
-			if (object instanceof ItemStack)
+			name = EnchantingTable.MODID + ":" + name;
+			NonNullList<Ingredient> list = NonNullList.create();
+
+			for (Object object : recipeComponents)
 			{
-				list.add(Ingredient.fromStacks(((ItemStack)object).copy()));
-			}
-			else if (object instanceof Item)
-			{
-				list.add(Ingredient.fromStacks(new ItemStack((Item)object)));
-			}
-			else
-			{
-				if (!(object instanceof Block))
+				if (object instanceof ItemStack)
 				{
-					throw new IllegalArgumentException("Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!");
+					list.add(Ingredient.fromStacks(((ItemStack)object).copy()));
 				}
+				else if (object instanceof Item)
+				{
+					list.add(Ingredient.fromStacks(new ItemStack((Item)object)));
+				}
+				else
+				{
+					if (!(object instanceof Block))
+					{
+						throw new IllegalArgumentException("Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!");
+					}
 
-				list.add(Ingredient.fromStacks(new ItemStack((Block)object)));
+					list.add(Ingredient.fromStacks(new ItemStack((Block)object)));
+				}
 			}
+			GameRegistry.register(new ShapelessRecipes(name, stack, list).setRegistryName(new ResourceLocation(name)));
 		}
-
-		CraftingManager.register(name, new ShapelessRecipes(name, stack, list));
+		catch (Exception ex)
+		{
+			EnchantingTable.LOGGER.catching(ex);
+		}
 	}
 
 }
