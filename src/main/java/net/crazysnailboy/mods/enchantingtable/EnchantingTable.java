@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-@Mod(modid = EnchantingTable.MODID, version = EnchantingTable.VERSION, name = EnchantingTable.NAME, updateJSON = EnchantingTable.UPDATEJSON, acceptedMinecraftVersions = "[1.12]", dependencies = "required-after:forge@[14.21.0.2324,);")
+@Mod(modid = EnchantingTable.MODID, version = EnchantingTable.VERSION, name = EnchantingTable.NAME, updateJSON = EnchantingTable.UPDATEJSON, acceptedMinecraftVersions = "[1.12]", dependencies = "required-after:forge@[14.21.0.2363,);")
 public class EnchantingTable
 {
 

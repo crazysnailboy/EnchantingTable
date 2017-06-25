@@ -14,7 +14,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ModBlocks
 {
@@ -24,8 +24,8 @@ public class ModBlocks
 
 	public static void registerBlocks()
 	{
-		GameRegistry.register(ENDER_ENCHANTING_TABLE);
-		GameRegistry.register(new ItemBlock(ENDER_ENCHANTING_TABLE).setRegistryName(ENDER_ENCHANTING_TABLE.getRegistryName()));
+		ForgeRegistries.BLOCKS.register(ENDER_ENCHANTING_TABLE);
+		ForgeRegistries.ITEMS.register(new ItemBlock(ENDER_ENCHANTING_TABLE).setRegistryName(ENDER_ENCHANTING_TABLE.getRegistryName()));
 	}
 
 	public static void registerInventoryModels()
@@ -68,7 +68,7 @@ public class ModBlocks
 					list.add(Ingredient.fromStacks(new ItemStack((Block)object)));
 				}
 			}
-			GameRegistry.register(new ShapelessRecipes(name, stack, list).setRegistryName(new ResourceLocation(name)));
+			ForgeRegistries.RECIPES.register(new ShapelessRecipes(name, stack, list).setRegistryName(new ResourceLocation(name)));
 		}
 		catch (Exception ex)
 		{
