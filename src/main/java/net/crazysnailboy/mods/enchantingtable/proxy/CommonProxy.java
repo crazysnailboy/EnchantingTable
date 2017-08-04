@@ -5,24 +5,22 @@ import net.crazysnailboy.mods.enchantingtable.capability.CapabilityHandler;
 import net.crazysnailboy.mods.enchantingtable.capability.ILapisHandler;
 import net.crazysnailboy.mods.enchantingtable.capability.LapisHandler;
 import net.crazysnailboy.mods.enchantingtable.common.network.GuiHandler;
-import net.crazysnailboy.mods.enchantingtable.init.ModBlocks;
 import net.crazysnailboy.mods.enchantingtable.tileentity.TileEntityEnchantmentTable;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
 
 public class CommonProxy
 {
 
 	public void preInit()
 	{
-		registerBlocks();
 		registerTileEntities();
 	}
 
 	public void init()
 	{
-		registerCraftingRecipes();
 		registerCapabilities();
 		registerGuiHandler();
 	}
@@ -31,16 +29,6 @@ public class CommonProxy
 	{
 	}
 
-
-	private void registerBlocks()
-	{
-		ModBlocks.registerBlocks();
-	}
-
-	private void registerCraftingRecipes()
-	{
-		ModBlocks.registerCraftingRecipes();
-	}
 
 	private void registerGuiHandler()
 	{

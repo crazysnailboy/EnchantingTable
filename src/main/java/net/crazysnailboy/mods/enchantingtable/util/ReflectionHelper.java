@@ -1,55 +1,41 @@
 package net.crazysnailboy.mods.enchantingtable.util;
 
 import java.lang.reflect.Field;
-import net.crazysnailboy.mods.enchantingtable.EnchantingTable;
+
 
 public class ReflectionHelper
 {
 
-	public static Field getDeclaredField(Class classToAccess, String... fieldNames)
+	/**
+	 * Obtain a field by name from class declaringClass.
+	 * Wrapper around {@link net.minecraftforge.fml.relauncher.ReflectionHelper#findField(Class, String...)}, included for convenience/competeness.
+	 */
+	public static final Field getDeclaredField(Class<?> declaringClass, String... fieldNames)
 	{
-		Field declaredField = null;
-		Exception ex = null;
-
-		for ( String fieldName : fieldNames )
-		{
-			try
-			{
-				declaredField = classToAccess.getDeclaredField(fieldName);
-				declaredField.setAccessible(true);
-				break;
-			}
-			catch (Exception e)
-			{
-				ex = e;
-			}
-		}
-
-		if (declaredField == null)
-		{
-			EnchantingTable.LOGGER.catching(ex);
-		}
-
-		return declaredField;
+		return net.minecraftforge.fml.relauncher.ReflectionHelper.findField(declaringClass, fieldNames);
 	}
 
 
+	/**
+	 * Obtain the value of Field fieldToAccess from an Object instance.
+	 */
 	@SuppressWarnings("unchecked")
-	public static <T,E> T getFieldValue(Field fieldToAccess, E instance)
+	public static final <T, E> T getFieldValue(final Field fieldToAccess, E instance)
 	{
-		T result = null;
 		try
 		{
-			result = (T)fieldToAccess.get(instance);
+			return (T)fieldToAccess.get(instance);
 		}
 		catch (Exception ex)
 		{
-			EnchantingTable.LOGGER.catching(ex);
+			throw new UnableToAccessFieldException(fieldToAccess, ex);
 		}
-		return result;
 	}
 
-	public static <T,E> void setFieldValue(Field fieldToAccess, E instance, T value)
+	/**
+	 * Set the value of Field fieldToAccess on an Object instance.
+	 */
+	public static final <T, E> void setFieldValue(final Field fieldToAccess, E instance, T value)
 	{
 		try
 		{
@@ -57,8 +43,23 @@ public class ReflectionHelper
 		}
 		catch (Exception ex)
 		{
-			EnchantingTable.LOGGER.catching(ex);
+			throw new UnableToAccessFieldException(fieldToAccess, ex);
 		}
 	}
 
+
+	public static class UnableToAccessFieldException extends net.minecraftforge.fml.relauncher.ReflectionHelper.UnableToAccessFieldException
+	{
+
+		public UnableToAccessFieldException(String[] fieldNames, Exception ex)
+		{
+			super(fieldNames, ex);
+		}
+
+		public UnableToAccessFieldException(Field field, Exception ex)
+		{
+			this(new String[] { field.getName() }, ex);
+		}
+
+	}
 }
