@@ -11,19 +11,19 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+
 public class CommonProxy
 {
 
 	public void preInit()
 	{
-		registerBlocks();
 		registerTileEntities();
 	}
 
 	public void init()
 	{
-		registerCraftingRecipes();
 		registerCapabilities();
+		registerCraftingRecipes();
 		registerGuiHandler();
 	}
 
@@ -32,9 +32,9 @@ public class CommonProxy
 	}
 
 
-	private void registerBlocks()
+	private void registerCapabilities()
 	{
-		ModBlocks.registerBlocks();
+		CapabilityManager.INSTANCE.register(ILapisHandler.class, new CapabilityHandler.Storage(), LapisHandler.class);
 	}
 
 	private void registerCraftingRecipes()
@@ -50,11 +50,6 @@ public class CommonProxy
 	private void registerTileEntities()
 	{
 		GameRegistry.registerTileEntity(TileEntityEnchantmentTable.class, TileEntityEnchantmentTable.class.getSimpleName());
-	}
-
-	private void registerCapabilities()
-	{
-		CapabilityManager.INSTANCE.register(ILapisHandler.class, new CapabilityHandler.Storage(), LapisHandler.class);
 	}
 
 }
