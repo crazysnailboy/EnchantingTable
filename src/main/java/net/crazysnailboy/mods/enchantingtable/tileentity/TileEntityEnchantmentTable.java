@@ -10,6 +10,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+
 public class TileEntityEnchantmentTable extends net.minecraft.tileentity.TileEntityEnchantmentTable
 {
 
@@ -40,14 +41,14 @@ public class TileEntityEnchantmentTable extends net.minecraft.tileentity.TileEnt
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T)this.handler;
+		if (facing == null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T)this.handler;
 		return super.getCapability(capability, facing);
 	}
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
+		if (facing == null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
 		return super.hasCapability(capability, facing);
 	}
 

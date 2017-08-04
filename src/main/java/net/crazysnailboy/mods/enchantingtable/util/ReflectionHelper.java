@@ -3,6 +3,7 @@ package net.crazysnailboy.mods.enchantingtable.util;
 import java.lang.reflect.Field;
 import net.crazysnailboy.mods.enchantingtable.EnchantingTable;
 
+
 public class ReflectionHelper
 {
 
@@ -11,7 +12,7 @@ public class ReflectionHelper
 		Field declaredField = null;
 		Exception ex = null;
 
-		for ( String fieldName : fieldNames )
+		for (String fieldName : fieldNames)
 		{
 			try
 			{
@@ -35,7 +36,7 @@ public class ReflectionHelper
 
 
 	@SuppressWarnings("unchecked")
-	public static <T,E> T getFieldValue(Field fieldToAccess, E instance)
+	public static <T, E> T getFieldValue(Field fieldToAccess, E instance)
 	{
 		T result = null;
 		try
@@ -49,7 +50,7 @@ public class ReflectionHelper
 		return result;
 	}
 
-	public static <T,E> void setFieldValue(Field fieldToAccess, E instance, T value)
+	public static <T, E> void setFieldValue(Field fieldToAccess, E instance, T value)
 	{
 		try
 		{

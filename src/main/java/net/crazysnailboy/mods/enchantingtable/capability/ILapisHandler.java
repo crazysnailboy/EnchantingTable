@@ -5,6 +5,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+
 public interface ILapisHandler extends IItemHandler, IItemHandlerModifiable, INBTSerializable<NBTTagCompound>
 {
 }

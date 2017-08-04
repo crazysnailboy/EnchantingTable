@@ -16,11 +16,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
+
 public class ContainerEnchantment extends net.minecraft.inventory.ContainerEnchantment
 {
 
-	private static final Field worldField = ReflectionHelper.getDeclaredField(net.minecraft.inventory.ContainerEnchantment.class, "worldPointer","field_75172_h");
-	private static final Field positionField = ReflectionHelper.getDeclaredField(net.minecraft.inventory.ContainerEnchantment.class, "position","field_178150_j");
+	private static final Field worldField = ReflectionHelper.getDeclaredField(net.minecraft.inventory.ContainerEnchantment.class, "worldPointer", "field_75172_h");
+	private static final Field positionField = ReflectionHelper.getDeclaredField(net.minecraft.inventory.ContainerEnchantment.class, "position", "field_178150_j");
 
 
 //	@SideOnly(Side.CLIENT)
@@ -105,7 +106,8 @@ public class ContainerEnchantment extends net.minecraft.inventory.ContainerEncha
 			TileEntityEnchantmentTable tileentityenchantmenttable = (TileEntityEnchantmentTable)tileentity;
 			IItemHandler handler = tileentityenchantmenttable.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-			ItemStack lapisStack = handler.getStackInSlot(0); if (!lapisStack.isEmpty()) lapisStack = lapisStack.copy();
+			ItemStack lapisStack = handler.getStackInSlot(0);
+			if (!lapisStack.isEmpty()) lapisStack = lapisStack.copy();
 			this.tableInventory.setInventorySlotContents(1, lapisStack);
 			handler.insertItem(0, ItemStack.EMPTY, false);
 		}
@@ -118,7 +120,8 @@ public class ContainerEnchantment extends net.minecraft.inventory.ContainerEncha
 		{
 			ILapisHandler handler = player.getCapability(CapabilityHandler.LAPIS_HANDLER_CAPABILITY, null);
 
-			ItemStack lapisStack = handler.getStackInSlot(0); if (!lapisStack.isEmpty()) lapisStack = lapisStack.copy();
+			ItemStack lapisStack = handler.getStackInSlot(0);
+			if (!lapisStack.isEmpty()) lapisStack = lapisStack.copy();
 			this.tableInventory.setInventorySlotContents(1, lapisStack);
 			handler.insertItem(0, ItemStack.EMPTY, false);
 		}

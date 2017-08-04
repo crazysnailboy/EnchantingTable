@@ -16,6 +16,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+
 public class CapabilityHandler
 {
 
@@ -23,8 +24,6 @@ public class CapabilityHandler
 	public static final Capability<ILapisHandler> LAPIS_HANDLER_CAPABILITY = null;
 
 	public static final EnumFacing DEFAULT_FACING = null;
-
-
 
 
 	public static class Provider implements ICapabilitySerializable<NBTBase>

@@ -11,12 +11,12 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+
 public class CommonProxy
 {
 
 	public void preInit()
 	{
-		registerBlocks();
 		registerTileEntities();
 	}
 
@@ -31,11 +31,6 @@ public class CommonProxy
 	{
 	}
 
-
-	private void registerBlocks()
-	{
-		ModBlocks.registerBlocks();
-	}
 
 	private void registerCraftingRecipes()
 	{
