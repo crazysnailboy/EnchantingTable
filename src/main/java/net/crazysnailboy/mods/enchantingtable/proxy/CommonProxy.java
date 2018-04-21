@@ -18,12 +18,12 @@ public class CommonProxy
 	public void preInit()
 	{
 		registerTileEntities();
+		registerCapabilities();
 	}
 
 	public void init()
 	{
 		registerCraftingRecipes();
-		registerCapabilities();
 		registerGuiHandler();
 	}
 
