@@ -2,7 +2,7 @@ package net.crazysnailboy.mods.enchantingtable.capability;
 
 import net.crazysnailboy.mods.enchantingtable.EnchantingTable;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -81,7 +81,7 @@ public class CapabilityHandler
 		@SubscribeEvent
 		public static void onAttachCapabilities(final AttachCapabilitiesEvent<Entity> event)
 		{
-			if (event.getObject() instanceof EntityLivingBase)
+			if (event.getObject() instanceof EntityPlayer)
 			{
 				event.addCapability(new ResourceLocation(EnchantingTable.MODID, "PlayerLapis"), new CapabilityHandler.Provider());
 			}
