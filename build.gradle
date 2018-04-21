@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.1.2"
+version = "1.1.3"
 group = "net.crazysnailboy.mods.enchantingtable"
 archivesBaseName = "EnchantingTable-1.12"
 
@@ -22,7 +22,7 @@ compileJava {
 minecraft {
     version = "1.12-14.21.1.2387"
     runDir = "run"
-    mappings = "snapshot_20170629"
+    mappings = "snapshot_20170624"
     makeObfSourceJar = false
 
     replace "\${version}", project.version
