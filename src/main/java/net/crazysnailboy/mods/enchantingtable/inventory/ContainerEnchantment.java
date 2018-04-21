@@ -52,7 +52,7 @@ public class ContainerEnchantment extends net.minecraft.inventory.ContainerEncha
 
 		if (world.getBlockState(pos).getBlock() instanceof BlockEnchantmentTable)
 		{
-			return player.getDistanceSq((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D) <= 64.0D;
+			return player.getDistanceSq(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;
 		}
 		else
 		{

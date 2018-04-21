@@ -138,8 +138,8 @@ public class GuiEnchantment extends GuiContainer
 		GlStateManager.rotate(180.0F, 1.0F, 0.0F, 0.0F);
 		float f3 = this.oFlip + (this.flip - this.oFlip) * partialTicks + 0.25F;
 		float f4 = this.oFlip + (this.flip - this.oFlip) * partialTicks + 0.75F;
-		f3 = (f3 - (float)MathHelper.fastFloor((double)f3)) * 1.6F - 0.3F;
-		f4 = (f4 - (float)MathHelper.fastFloor((double)f4)) * 1.6F - 0.3F;
+		f3 = (f3 - MathHelper.fastFloor(f3)) * 1.6F - 0.3F;
+		f4 = (f4 - MathHelper.fastFloor(f4)) * 1.6F - 0.3F;
 
 		if (f3 < 0.0F)
 		{
@@ -172,7 +172,7 @@ public class GuiEnchantment extends GuiContainer
 		GlStateManager.popMatrix();
 		RenderHelper.disableStandardItemLighting();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		EnchantmentNameParts.getInstance().reseedRandomGenerator((long)this.container.xpSeed);
+		EnchantmentNameParts.getInstance().reseedRandomGenerator(this.container.xpSeed);
 		int k = this.container.getLapisAmount();
 
 		for (int l = 0; l < 3; ++l)
@@ -224,7 +224,7 @@ public class GuiEnchantment extends GuiContainer
 				}
 
 				fontrenderer = this.mc.fontRendererObj;
-				fontrenderer.drawStringWithShadow(s, (float)(j1 + 86 - fontrenderer.getStringWidth(s)), (float)(j + 16 + 19 * l + 7), i2);
+				fontrenderer.drawStringWithShadow(s, j1 + 86 - fontrenderer.getStringWidth(s), j + 16 + 19 * l + 7, i2);
 			}
 		}
 	}
@@ -304,7 +304,7 @@ public class GuiEnchantment extends GuiContainer
 
 			while (true)
 			{
-				this.flipT += (float)(this.random.nextInt(4) - this.random.nextInt(4));
+				this.flipT += this.random.nextInt(4) - this.random.nextInt(4);
 
 				if (this.flip > this.flipT + 1.0F || this.flip < this.flipT - 1.0F)
 				{
